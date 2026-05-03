@@ -1,6 +1,6 @@
 {
   "name": "@finchi/tom-select-coreui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tom Select Stimulus wrapper and CoreUI/Bootstrap form-control SCSS theme.",
   "type": "module",
   "main": "src/index.js",
