@@ -1,0 +1,27 @@
+{
+  "name": "@finchi/tom-select-coreui",
+  "version": "1.0.0",
+  "description": "Tom Select Stimulus wrapper and CoreUI/Bootstrap form-control SCSS theme.",
+  "type": "module",
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "scss",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finchi/tom-select-coreui.git"
+  },
+  "peerDependencies": {
+    "@coreui/coreui": "^5.6.1",
+    "@hotwired/stimulus": "^3.2.2",
+    "tom-select": "^2.5.2"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}
