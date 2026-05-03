@@ -1,0 +1,12 @@
+@use '../config' as *;
+
+.#{$select-ns}-wrapper.plugin-drag_drop {
+  .#{$select-ns}-dragging {
+    color: transparent !important;
+  }
+
+  .#{$select-ns}-dragging > * {
+    visibility: hidden !important;
+  }
+
+}

@@ -1,0 +1,92 @@
+/**
+ * Tom Select Configuration
+ * CoreUI theme defaults
+ */
+@use "@coreui/coreui/scss/coreui" as coreui;
+
+// namespace
+$select-ns: 'ts' !default;
+
+// typography
+$select-font-family: inherit !default;
+$select-font-size: inherit !default;
+$select-line-height: coreui.$input-btn-line-height !default;
+
+// colors - text
+$select-color-text: var(--cui-gray-800) !default;
+$select-color-highlight: rgba(255, 237, 40, 40%) !default;
+
+// colors - input
+$select-color-input: var(--cui-body-bg) !default;
+$select-color-input-full: var(--cui-body-bg) !default;
+$select-color-disabled: var(--cui-secondary-bg) !default;
+$select-color-border: var(--cui-border-color) !default;
+
+// colors - items (multi-select tags)
+$select-color-item: var(--cui-secondary-bg) !default;
+$select-color-item-text: $select-color-text !default;
+$select-color-item-border: var(--cui-border-color) !default;
+$select-color-item-active: var(--cui-primary) !default;
+$select-color-item-active-text: var(--cui-light) !default;
+$select-color-item-active-border: transparent !default;
+$select-color-item-hover-bg: rgba(0, 0, 0, 5%) !default;
+
+// colors - dropdown
+$select-color-dropdown: var(--cui-body-bg) !default;
+$select-color-dropdown-border: var(--cui-border-color-translucent) !default;
+$select-color-dropdown-border-top: var(--cui-border-color-translucent) !default;
+$select-color-dropdown-item-active: var(--cui-tertiary-bg) !default;
+$select-color-dropdown-item-active-text: var(--cui-body-color) !default;
+$select-color-dropdown-item-create-text: color-mix(in srgb, var(--cui-gray-800) 50%, transparent) !default;
+$select-color-dropdown-item-create-active-text: $select-color-dropdown-item-active-text !default;
+$select-color-dropdown-header-bg: var(--cui-tertiary-bg) !default;
+
+// colors - optgroup
+$select-color-optgroup: var(--cui-body-bg) !default;
+$select-color-optgroup-text: var(--cui-gray-600) !default;
+
+// colors - disabled state
+$select-opacity-disabled: 0.5 !default;
+$select-color-disabled-item-text: var(--cui-gray-600) !default;
+$select-color-disabled-item-bg: var(--cui-body-bg) !default;
+$select-color-disabled-item-border: var(--cui-body-bg) !default;
+$select-color-text-darkened: var(--cui-gray-900) !default;
+
+// borders
+$select-border-width: 1px !default;
+$select-border: $select-border-width solid var(--cui-border-color) !default;
+$select-dropdown-border: 1px solid $select-color-dropdown-border !default;
+$select-border-radius: var(--cui-border-radius) !default;
+$select-width-item-border: 0 !default;
+
+// shadows
+$select-shadow-input: none !default;
+$select-shadow-input-focus: none !default;
+$select-shadow-dropdown: 0 6px 12px rgba(0, 0, 0, 17.5%) !default;
+
+// sizing - padding
+$select-padding-x: coreui.$input-padding-x !default;
+$select-padding-y: coreui.$input-padding-y !default;
+$select-padding-item-x: 6px !default;
+$select-padding-item-y: 2px !default;
+$select-padding-dropdown-item-x: coreui.$input-btn-padding-x !default;
+$select-padding-dropdown-item-y: 5px !default;
+
+// sizing - margins
+$select-margin-item-x: 3px !default;
+$select-margin-item-y: 3px !default;
+$select-caret-margin: 0 4px !default;
+$select-caret-margin-rtl: 0 4px 0 -2px !default;
+
+// sizing - dropdown
+$select-max-height-dropdown: 200px !default;
+
+// arrow
+$select-arrow-size: 5px !default;
+$select-arrow-color: var(--cui-gray-800) !default;
+$select-arrow-offset: 15px !default;
+
+// spinner
+$select-spinner-size: 30px !default;
+$select-spinner-border-size: 5px !default;
+$select-spinner-border-color: var(--cui-border-color) !default;

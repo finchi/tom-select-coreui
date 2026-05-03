@@ -1,0 +1,27 @@
+@use '../config' as *;
+
+.#{$select-ns}-dropdown.plugin-optgroup_columns {
+  .#{$select-ns}-dropdown-content {
+    display: flex;
+  }
+
+  .optgroup {
+    border-right: 1px solid $select-color-item;
+    border-top: 0 none;
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+  }
+
+  .optgroup:last-child {
+    border-right: 0 none;
+  }
+
+  .optgroup::before {
+    display: none;
+  }
+
+  .optgroup-header {
+    border-top: 0 none;
+  }
+}
