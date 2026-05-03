@@ -1,0 +1,199 @@
+/**
+ * Tom Select CoreUI Theme
+ * Dart Sass 3.0 compatible
+ */
+@use "@coreui/coreui/scss/coreui" as coreui;
+
+// Import config (CoreUI defaults)
+@use 'config' as *;
+
+// Import base partials (now include CoreUI styles)
+@use 'items';
+@use 'dropdown';
+
+// Import plugins
+@use "plugins/drag_drop";
+@use "plugins/checkbox_options";
+@use "plugins/clear_button";
+@use "plugins/dropdown_header";
+@use "plugins/dropdown_input";
+@use "plugins/input_autogrow";
+@use "plugins/optgroup_columns";
+@use "plugins/remove_button";
+
+// =============================================================================
+// Base styles
+// =============================================================================
+
+:root {
+  --ts-pr-clear-button: 0px;
+  --ts-pr-caret: 0px;
+  --ts-pr-min: .75rem;
+}
+
+.#{$select-ns}-wrapper {
+  position: relative;
+}
+
+.#{$select-ns}-wrapper.single {
+  .#{$select-ns}-control {
+    &, input {
+      cursor: pointer;
+    }
+  }
+}
+
+.#{$select-ns}-control:not(.rtl) {
+  padding-right: max(var(--ts-pr-min), calc(var(--ts-pr-clear-button) + var(--ts-pr-caret))) !important;
+}
+
+.#{$select-ns}-control.rtl {
+  padding-left: max(var(--ts-pr-min), calc(var(--ts-pr-clear-button) + var(--ts-pr-caret))) !important;
+}
+
+.#{$select-ns}-dropdown,
+.#{$select-ns}-control,
+.#{$select-ns}-control input {
+  color: $select-color-text;
+  font-family: $select-font-family;
+  font-size: $select-font-size;
+  line-height: $select-line-height;
+}
+
+.#{$select-ns}-control,
+.#{$select-ns}-wrapper.single.input-active .#{$select-ns}-control {
+  background: $select-color-input;
+  cursor: text;
+}
+
+.#{$select-ns}-hidden-accessible {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+// =============================================================================
+// Bootstrap/CoreUI form integration
+// =============================================================================
+
+.#{$select-ns}-dropdown,
+.#{$select-ns}-dropdown.form-control,
+.#{$select-ns}-dropdown.form-select {
+  height: auto;
+  padding: 0;
+}
+
+.#{$select-ns}-wrapper {
+  min-height: coreui.$input-height;
+  display: flex;
+
+  .input-group-sm > &,
+  &.form-select-sm,
+  &.form-control-sm {
+    min-height: coreui.$input-height-sm;
+
+    .#{$select-ns}-control {
+      @include coreui.border-radius(coreui.$input-border-radius-sm);
+      @include coreui.font-size(coreui.$input-font-size-sm);
+    }
+
+    &.has-items .#{$select-ns}-control {
+      font-size: coreui.$input-font-size-sm;
+      padding-bottom: 0;
+    }
+  }
+
+  .input-group-sm > &.multi.has-items,
+  &.form-select-sm.multi.has-items,
+  &.form-control-sm.multi.has-items {
+    .#{$select-ns}-control {
+      $border-and-padding: calc((#{coreui.$input-border-width} + #{$select-padding-item-y}) * 2);
+      $ts-select-padding-sm: calc((#{coreui.$input-height-sm} - (#{$select-line-height} * #{coreui.$input-font-size-sm}) - #{$border-and-padding}) / 2);
+
+      padding-top: $ts-select-padding-sm !important;
+    }
+  }
+
+  &.multi {
+    &.has-items .#{$select-ns}-control {
+      padding-left: calc(#{$select-padding-x} - #{$select-padding-item-x});
+
+      --ts-pr-min: calc(#{$select-padding-x} - #{$select-padding-item-x});
+    }
+
+    .#{$select-ns}-control > div {
+      border-radius: calc(#{$select-border-radius} - 1px);
+    }
+  }
+
+  .input-group-lg > &,
+  &.form-control-lg,
+  &.form-select-lg {
+    min-height: coreui.$input-height-lg;
+
+    .#{$select-ns}-control {
+      @include coreui.border-radius(coreui.$input-border-radius-lg);
+      @include coreui.font-size(coreui.$input-font-size-lg);
+    }
+  }
+
+  &:not(.form-control, .form-select) {
+    padding: 0;
+    border: none;
+    height: auto;
+    box-shadow: none;
+    background: none;
+
+    &.single .#{$select-ns}-control {
+      background-image: coreui.escape-svg(coreui.$form-select-indicator);
+      background-repeat: no-repeat;
+      background-position: coreui.$form-select-bg-position;
+      background-size: coreui.$form-select-bg-size;
+    }
+  }
+
+  &.form-select,
+  &.single {
+    --ts-pr-caret: #{coreui.$form-select-indicator-padding};
+  }
+
+  &.form-control,
+  &.form-select {
+    padding: 0 !important;
+    height: auto;
+    box-shadow: none;
+    display: flex;
+
+    .#{$select-ns}-control,
+    &.single.input-active .#{$select-ns}-control {
+      border: none !important;
+    }
+
+    &:not(.disabled) .#{$select-ns}-control,
+    &:not(.disabled).single.input-active .#{$select-ns}-control {
+      background: transparent !important;
+    }
+  }
+}
+
+.input-group {
+  & > .#{$select-ns}-wrapper {
+    flex-grow: 1;
+    width: 1%;
+  }
+
+  & > .#{$select-ns}-wrapper:not(:nth-child(2)) > .#{$select-ns}-control {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  & > .#{$select-ns}-wrapper:not(:last-child) > .#{$select-ns}-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
