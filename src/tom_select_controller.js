@@ -7,6 +7,7 @@ export class TomSelectController extends Controller {
 		removeButton: {type: Boolean, default: true},
 		maxOptions: {type: Number, default: null},
 		dropdownParent: {type: String, default: null},
+		openOnFocus: {type: Boolean, default: true},
 	}
 
 	get plugins() {
@@ -26,6 +27,7 @@ export class TomSelectController extends Controller {
 		this.tomSelect = new TomSelect(this.element, {
 			maxOptions: this.maxOptionsValue,
 			dropdownParent: this.dropdownParentValue,
+			openOnFocus: this.openOnFocusValue,
 			plugins: this.plugins,
 		})
 	}

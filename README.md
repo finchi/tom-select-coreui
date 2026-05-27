@@ -32,6 +32,7 @@ application.register("tom-select", TomSelectController)
 | `removeButton` | Boolean | `true` | Enables the `remove_button` plugin |
 | `maxOptions` | Number | `null` | Caps rendered options |
 | `dropdownParent` | String | `null` | CSS selector for the dropdown's portal target |
+| `openOnFocus` | Boolean | `true` | When `false`, the dropdown stays closed on focus and only opens once the user starts typing (type-ahead) |
 
 Markup example:
 
