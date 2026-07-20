@@ -23,13 +23,18 @@ export class TomSelectController extends Controller {
 		this.initTomSelect()
 	}
 
-	initTomSelect() {
-		this.tomSelect = new TomSelect(this.element, {
+	// Extension point: subclasses override (spreading super.tomSelectOptions) to customise Tom Select.
+	get tomSelectOptions() {
+		return {
 			maxOptions: this.maxOptionsValue,
 			dropdownParent: this.dropdownParentValue,
 			openOnFocus: this.openOnFocusValue,
 			plugins: this.plugins,
-		})
+		}
+	}
+
+	initTomSelect() {
+		this.tomSelect = new TomSelect(this.element, this.tomSelectOptions)
 	}
 
 	disconnect() {
