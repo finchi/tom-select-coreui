@@ -7,7 +7,7 @@ A [Tom Select](https://tom-select.js.org/) Stimulus wrapper plus a CoreUI/Bootst
 Add the package via Git in your `package.json`:
 
 ```json
-"@finchi/tom-select-coreui": "git+https://github.com/finchi/tom-select-coreui.git#v1.0.2"
+"@finchi/tom-select-coreui": "git+https://github.com/finchi/tom-select-coreui.git#v1.1.0"
 ```
 
 Then `yarn install` (or `npm install`).
@@ -39,6 +39,32 @@ Markup example:
 ```erb
 <%= form.select :tag_ids, @tags.map { |t| [t.name, t.id] }, {}, multiple: true,
       data: { controller: "tom-select", "tom-select-remove-button-value": true } %>
+```
+
+### Extending
+
+`tomSelectOptions` is the extension point: subclass the controller and override the getter to change or add Tom Select options (spread `super.tomSelectOptions` to keep the defaults). The `connect`/`disconnect` lifecycle and `turbo:morph` reconnection are inherited; Stimulus merges `static values` across the chain.
+
+```js
+import { TomSelectController } from "@finchi/tom-select-coreui"
+
+export class RemoteSelectController extends TomSelectController {
+  static values = { url: String }
+
+  get tomSelectOptions() {
+    return {
+      ...super.tomSelectOptions,
+      valueField: "id",
+      labelField: "text",
+      load: (query, callback) => {
+        fetch(`${this.urlValue}?q=${encodeURIComponent(query)}`, { headers: { Accept: "application/json" } })
+          .then((r) => r.json())
+          .then(callback)
+          .catch(() => callback())
+      },
+    }
+  }
+}
 ```
 
 ## SCSS
