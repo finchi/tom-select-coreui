@@ -100,10 +100,15 @@
     .#{$select-ns}-control {
       @include coreui.border-radius(coreui.$input-border-radius-sm);
       @include coreui.font-size(coreui.$input-font-size-sm);
+      padding-top: coreui.$input-padding-y-sm;
+      padding-bottom: coreui.$input-padding-y-sm;
     }
 
     &.has-items .#{$select-ns}-control {
       font-size: coreui.$input-font-size-sm;
+    }
+
+    &.multi.has-items .#{$select-ns}-control {
       padding-bottom: 0;
     }
   }
