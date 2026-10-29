@@ -7,7 +7,7 @@ A [Tom Select](https://tom-select.js.org/) Stimulus wrapper plus a CoreUI/Bootst
 Add the package via Git in your `package.json`:
 
 ```json
-"@finchi/tom-select-coreui": "git+https://github.com/finchi/tom-select-coreui.git#v1.1.2"
+"@finchi/tom-select-coreui": "git+https://github.com/finchi/tom-select-coreui.git#v1.1.3"
 ```
 
 Then `yarn install` (or `npm install`).

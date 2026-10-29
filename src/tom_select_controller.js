@@ -46,6 +46,7 @@ export class TomSelectController extends Controller {
 		this.selected = this.tomSelect.getValue()
 		this.tomSelect.destroy()
 		this.initTomSelect()
-		this.tomSelect.setValue(this.selected)
+		// Silent: a restore after a morph is no user change, and change listeners (auto-submit forms) must not fire.
+		this.tomSelect.setValue(this.selected, true)
 	}
 }
